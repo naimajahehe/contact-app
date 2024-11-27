@@ -1,0 +1,39 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Daftar Kontak</h2>
+            <% if (msg.length !== 0) { %>
+            <div class="alert alert-success" role="alert"><%= msg  %></div>
+            <% } %>
+            <table class="table table-striped">
+            <% if (contacts.length === 0) { %>
+                <div class="alert alert-warning" role="alert">
+                Data Contact tidak ditemukan!
+                </div>
+            <% } else { %>
+                <thead>
+                    <tr>
+                      <th scope="col">Number</th>
+                      <th scope="col">Nama</th>
+                      <th scope="col">Nomor HP</th>
+                      <th scope="col">Detail</th>
+                    </tr>
+                </thead>
+                <tbody>
+            <% contacts.forEach((contacts, i) => { %>
+                <tr>
+                    <th scope="row"><%= i+1  %></th>
+                    <td><%= contacts.nama  %></td>
+                    <td><%= contacts.nomorHP %></td>
+                    <td>
+                        <a href="/contact/<%= contacts.nama  %>" class="btn btn-success badge rounded-pill"><i class="bi bi-info-circle"></i> detail</a>
+                    </td>
+                </tr>
+            <% }) %>
+            <% } %>
+            </tbody>
+          </table>
+          <a href="/contact/add" class="btn btn-primary mb-1">Tambah Data Contact</a>
+        </div>
+    </div>
+</div>
